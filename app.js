@@ -1,11 +1,14 @@
 'use strict';
 
+var correctanswers = 0;
+
 var nice = prompt('Does Ryan seem like a nice guy?');
 var nice1 = nice.toUpperCase();
 console.log('niceness:', nice);
 
 if (nice1 === 'YES' || nice1 === 'Y') {
   alert ('You are Correct, Ryan is a nice guy!');
+  correctanswers++;
 }
 else if (nice1 === 'NO' || nice1 === 'N') {
   alert ('Incorrect meanie, Ryan is a nice guy!');
@@ -20,6 +23,7 @@ console.log('pet:', pet);
 
 if (pet1 === 'YES' || pet1 === 'Y') {
   alert ('You are Incorrect, Ryan does not own a pet.');
+  correctanswers++;
 }
 else if (pet1 === 'NO' || pet1 === 'N') {
   alert ('Correct, sadly Ryan does not own a pet.');
@@ -34,6 +38,7 @@ console.log('siblings:', siblings);
 
 if (siblings1 === 'YES' || siblings1 === 'Y') {
   alert ('You are Correct, Ryan has two siblings!')
+  correctanswers++;
 }
 else if (siblings1 === 'NO' || siblings1 === 'N') {
   alert ('Incorrect, Ryan has two siblings.');
@@ -47,6 +52,7 @@ console.log('car:', car);
 
 if (car1 === 'YES' || car1 === 'Y') {
   alert ('You are Correct, Ryan owns a Toyota!')
+  correctanswers++;
 }
 else if (car1 === 'NO' || car1 === 'N') {
   alert ('Incorrect, Ryan owns a car.');
@@ -61,6 +67,7 @@ console.log('christmas:', xmas);
 
 if (xmas1 === 'YES' || xmas1 === 'Y') {
   alert ('You are Correct, Ryan loves Christmas, who doesnt?')
+  correctanswers++;
 }
 else if (xmas1 === 'NO' || xmas1 === 'N') {
   alert ('Incorrect, Ryan loves Christmas.');
@@ -72,36 +79,51 @@ var meals;
 var counter = 0;
 
 while (counter !== 4) {
-  meals = parseInt(prompt('How many meals did Ryan eat yesterday?'))
-
-if (meals < 4) {
-  alert('You guessed too low, Ryan eats more than that!');
-  counter++;
-} else if (meals > 4) {
-  alert('You guessed too high, Ryan doesnt eat that much!');
-  counter++;
-} else if (meals === NaN || meals === null) {
-  alert('Please enter a number');
-  counter++;
+  meals = (prompt('How many meals did Ryan eat yesterday?'))
+  console.log(meals)
+  if (meals == 4) {
+    alert('You are Correct');
+    correctanswers++;
+    break
+  } else if (meals < 4) {
+    alert('You guessed too low, Ryan eats more than that!');
+    counter++;
+  } else if (meals > 4) {
+    alert('You guessed too high, Ryan doesnt eat that much!');
+    counter++;
+  } else if (meals === NaN || meals === null) {
+    alert('Please enter a number');
+    counter++;
   }
 }
 
 console.log('counter:', counter);
 
+var statecounter = 0;
 var states = ['colorado', 'arizona'];
-var answer = prompt('What states has Ryan lived in besides Washington?');
 var flag;
 
-for (var i = 0; i < states.length; i++) {
-  console.log('each iteration:', states[i]);
-
-  if (answer === states[i]) {
-    alert('Correct! That is one of the states where Ryan has lived!');
-    flag = true;
-    break;
+while (statecounter < 7) {
+  var answer = prompt('What states has Ryan lived in besides Washington?');
+  for (var i = 0; i < states.length; i++) {
+    console.log('each iteration:', states[i]);
+    if (answer === states[i]) {
+      alert('Correct, you guessed either ' + states[0] + ' or ' + states[1]);
+      flag = true;
+      correctanswers++;
+      break;
+      statecounter === 6;
+    }
+    if (!flag) {
+      alert('Nope, you are incorrect');
+      statecounter++;
+      break;
+    }
+    if (statecounter === 6) {
+      alert('Nice try, these are the correct states. ' + states);
+      break;
+    }
   }
 }
 
-if (!flag) {
-  alert('Nope, you are incorrect');
-}
+alert('You got ' + correctanswers + ' correct answers!');

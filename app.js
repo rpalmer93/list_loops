@@ -79,7 +79,7 @@ var meals;
 var counter = 0;
 
 while (counter !== 4) {
-  meals = (prompt('How many meals did Ryan eat yesterday?'))
+  meals = parseInt(prompt('How many meals did Ryan eat yesterday?'))
   console.log(meals)
   if (meals == 4) {
     alert('You are Correct');
@@ -99,31 +99,28 @@ while (counter !== 4) {
 
 console.log('counter:', counter);
 
-var statecounter = 0;
-var states = ['colorado', 'arizona'];
+
+var states = ['colorado', ' arizona'];
+var answer = prompt('What states has Ryan lived in besides Washington?');
 var flag;
 
-while (statecounter < 7) {
-  var answer = prompt('What states has Ryan lived in besides Washington?');
-  for (var i = 0; i < states.length; i++) {
+  for (var i = 0; i < 5; i++) {
     console.log('each iteration:', states[i]);
-    if (answer === states[i]) {
+    if ((answer === states[0]) || (answer === states[1])) {
       alert('Correct, you guessed either ' + states[0] + ' or ' + states[1]);
       flag = true;
       correctanswers++;
       break;
-      statecounter === 6;
+
     }
-    if (!flag) {
+    else {
       alert('Nope, you are incorrect');
-      statecounter++;
-      break;
-    }
-    if (statecounter === 6) {
-      alert('Nice try, these are the correct states. ' + states);
-      break;
+      answer = prompt('What states has Ryan lived in besides Washington?');
+
     }
   }
-}
+  if (!flag) {
+    alert('Nice try, these are the correct states. ' + states);
+  }
 
-alert('You got ' + correctanswers + ' correct answers!');
+alert('You got ' + correctanswers + ' out of 7 correct answers!');
